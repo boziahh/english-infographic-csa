@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Image Viewer</title>
+    <title>Infographic Viewer</title>
     <style>
         * {
             margin: 0;
@@ -35,11 +35,25 @@
             object-fit: contain;
             transition: transform 0.1s;
         }
+
+        .image-title {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-family: Arial, sans-serif;
+            font-size: 1.5em;
+            text-shadow: 0 0 5px rgba(0,0,0,0.5);
+            z-index: 10;
+            pointer-events: none;
+        }
     </style>
 </head>
 <body>
+    <div class="image-title">Infographic Display</div>
     <div id="image-container">
-        <img id="viewed-image" src="infographic.png" alt="Viewer Image">
+        <img id="viewed-image" src="infographic.png" alt="Interactive Infographic">
     </div>
 
     <script>
@@ -112,15 +126,6 @@
             scale = 1;
             posX = 0;
             posY = 0;
-            applyTransform();
-        });
-
-        // Initial scale to fit screen
-        window.addEventListener('load', () => {
-            scale = Math.min(
-                window.innerWidth / image.naturalWidth,
-                window.innerHeight / image.naturalHeight
-            );
             applyTransform();
         });
     </script>
